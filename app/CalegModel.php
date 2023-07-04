@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class CalegModel extends Model
 {
-    protected $table = 'survey_khusus_caleg';
+    protected $table = "survey_khusus_caleg";
 }
