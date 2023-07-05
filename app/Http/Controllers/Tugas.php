@@ -24,7 +24,7 @@ class Tugas extends Controller
                 ->get();
             return response()->json($tugas, 200);
         } catch (\Exception $e) {
-            return response()->json(["message" => $e->getMessage(), 500]);
+            return response()->json(["message" => $e->getMessage()], 500);
         }
     }
     public function kirimTugas(Request $request)
@@ -40,13 +40,13 @@ class Tugas extends Controller
             $tugas->timestamps = false;
             $tugas->laporan = $request->laporan;
             $tugas->path =
-                env("APP_URL") . "/public/storage/" . $image_uploaded_path;
+                env("APP_URL") . "/storage/" . $image_uploaded_path;
             $tugas->status = 2;
             $tugas->save();
 
             return response()->json($tugas, 200);
         } catch (\Exception $e) {
-            return response()->json(["message" => $e->getMessage(), 500]);
+            return response()->json(["message" => $e->getMessage()], 500);
         }
     }
 }

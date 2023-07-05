@@ -16,7 +16,7 @@ class SurveyKhusus extends Controller
             $partai = PartaiModel::get();
             return response()->json($partai, 200);
         } catch (\Exception $e) {
-            return response()->json(["message" => $e->getMessage(), 500]);
+            return response()->json(["message" => $e->getMessage()], 500);
         }
     }
 
@@ -40,7 +40,7 @@ class SurveyKhusus extends Controller
             $caleg = CalegModel::where($where)->get();
             return response()->json($caleg, 200);
         } catch (\Exception $e) {
-            return response()->json(["message" => $e->getMessage(), 500]);
+            return response()->json(["message" => $e->getMessage()], 500);
         }
     }
 
@@ -55,7 +55,7 @@ class SurveyKhusus extends Controller
             $result = SurveyKhusuModel::insert($arr);
             return response()->json($result, 200);
         } catch (\Exception $e) {
-            return response()->json(["message" => $e->getMessage(), 500]);
+            return response()->json(["message" => $e->getMessage()], 500);
         }
     }
 }

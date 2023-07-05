@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use \Datetime;
 use App\UserModel;
 use App\TugasModel;
@@ -71,7 +72,7 @@ class Survey extends Controller
                 );
             }
         } catch (\Exception $e) {
-            return response()->json(["message" => $e->getMessage(), 500]);
+            return response()->json(["message" => $e->getMessage()], 500);
         }
     }
 
@@ -104,7 +105,7 @@ class Survey extends Controller
             $surveyAnswer = SurveyAnswerModel::insert($temp);
             return response()->json($surveyStatus, 201);
         } catch (\Exception $e) {
-            return response()->json(["message" => $e->getMessage(), 500]);
+            return response()->json(["message" => $e->getMessage()], 500);
         }
     }
     public function dashboard(Request $request)
@@ -112,7 +113,7 @@ class Survey extends Controller
         try {
             $role = $request->route("role");
             $id = $request->query("id_pengisi");
-            $survey;
+
             $user = UserModel::find($id);
             $surveyStatus = SurveyStatusModel::where(
                 "id_pengisi",
@@ -137,7 +138,7 @@ class Survey extends Controller
                 );
             } else {
                 $survey = SurveyModel::where("status", "=", 1)
-                ->count();
+                    ->count();
                 $tugas = TugasModel::where([
                     ["status", "=", 1],
                     ["pic", "=", $id],
@@ -157,7 +158,7 @@ class Survey extends Controller
                 );
             }
         } catch (\Exception $e) {
-            return response()->json(["message" => $e->getMessage(), 500]);
+            return response()->json(["message" => $e->getMessage()], 500);
         }
     }
     public function kirimBanyakSurvey(Request $request)
@@ -197,7 +198,7 @@ class Survey extends Controller
                 return response()->json($th, 500);
             }
         } catch (\Exception $e) {
-            return response()->json(["message" => $e->getMessage(), 500]);
+            return response()->json(["message" => $e->getMessage()], 500);
         }
     }
 
@@ -225,7 +226,7 @@ class Survey extends Controller
             }
             return response()->json($response, 200);
         } catch (\Exception $e) {
-            return response()->json(["message" => $e->getMessage(), 500]);
+            return response()->json(["message" => $e->getMessage()], 500);
         }
     }
 }

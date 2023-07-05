@@ -21,7 +21,7 @@ class Pengaduan extends Controller
                 "judul" => $request->judul,
                 "keterangan" => $request->keterangan,
                 "path" =>
-                    env("APP_URL") . "/public/storage/" . $image_uploaded_path,
+                env("APP_URL") . "/storage/" . $image_uploaded_path,
                 "waktu_pengaduan" => now(),
                 "longtitude" => $request->longtitude,
                 "latitude" => $request->latitude,
@@ -30,7 +30,7 @@ class Pengaduan extends Controller
 
             return response()->json($pengaduan, 200);
         } catch (\Exception $e) {
-            return response()->json(["message" => $e->getMessage(), 500]);
+            return response()->json(["message" => $e->getMessage()], 500);
         }
     }
     public function getPengaduan(Request $request)
@@ -53,7 +53,7 @@ class Pengaduan extends Controller
                 ->get();
             return response()->json($pengaduan, 200);
         } catch (\Exception $e) {
-            return response()->json(["message" => $e->getMessage(), 500]);
+            return response()->json(["message" => $e->getMessage()], 500);
         }
     }
 
@@ -72,7 +72,7 @@ class Pengaduan extends Controller
                     "judul" => $request->judul[$index],
                     "keterangan" => $request->keterangan[$index],
                     "path" =>
-                        env("APP_URL") .
+                    env("APP_URL") .
                         "/public/storage/" .
                         $image_uploaded_path,
                     "waktu_pengaduan" => now(),
@@ -87,7 +87,7 @@ class Pengaduan extends Controller
 
             return response()->json($pengaduan, 200);
         } catch (\Exception $e) {
-            return response()->json(["message" => $e->getMessage(), 500]);
+            return response()->json(["message" => $e->getMessage()], 500);
         }
     }
 }

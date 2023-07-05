@@ -33,6 +33,8 @@ Route::post("/pengaduan", [Pengaduan::class, "kirimPengaduan"]);
 Route::Get("/pengaduan", [Pengaduan::class, "getPengaduan"]);
 Route::post("/pengaduan/banyak", [Pengaduan::class, "kirimBanyakPengaduan"]);
 Route::post("/user/referal", [User::class, "inputReferal"]);
+Route::post("/user/check", [User::class, "checkReferal"]);
+Route::post("/user/last", [User::class, "updateLastLogin"]);
 Route::get("/user/referal", [User::class, "getDataReferal"]);
 Route::get("/user/{code}", [User::class, "getJumlahPemilih"]);
 Route::get("/partai", [SurveyKhusus::class, "getPartai"]);

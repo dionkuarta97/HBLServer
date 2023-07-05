@@ -15,7 +15,7 @@ class BantuanModelController extends Controller
             $bantuan = BantuanModel::get();
             return response()->json($bantuan, 200);
         } catch (\Exception $e) {
-            return response()->json(["message" => $e->getMessage(), 500]);
+            return response()->json(["message" => $e->getMessage()], 500);
         }
     }
 }

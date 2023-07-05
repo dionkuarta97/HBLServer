@@ -24,7 +24,7 @@ class Logistik extends Controller
                 ->get();
             return response()->json($logistik, 200);
         } catch (\Exception $e) {
-            return response()->json(["message" => $e->getMessage(), 500]);
+            return response()->json(["message" => $e->getMessage()], 500);
         }
     }
     public function kirimLogistik(Request $request)
@@ -40,7 +40,7 @@ class Logistik extends Controller
             $logistik->timestamps = false;
             $logistik->laporan = $request->laporan;
             $logistik->path =
-                env("APP_URL") . "/public/storage/" . $image_uploaded_path;
+                env("APP_URL") . "/storage/" . $image_uploaded_path;
             $logistik->latitude = $request->latitude;
             $logistik->longtitude = $request->longtitude;
             $logistik->status = 2;
@@ -48,7 +48,7 @@ class Logistik extends Controller
 
             return response()->json($logistik, 200);
         } catch (\Exception $e) {
-            return response()->json(["message" => $e->getMessage(), 500]);
+            return response()->json(["message" => $e->getMessage()], 500);
         }
     }
 }
